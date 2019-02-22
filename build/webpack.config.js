@@ -21,11 +21,18 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              importLoaders: 2
+              importLoaders: 2,
+              modules: true
             }
           },
           'sass-loader',
           'postcss-loader']
+      },
+      {
+        test: /\.(eot|ttf|svg)$/,
+        use: {
+          loader: 'file-loader'
+        }
       }
     ]
   },
