@@ -1,4 +1,6 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   mode: 'development', // production => 压缩, development 不压缩
@@ -36,6 +38,12 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new CleanWebpackPlugin(['./dist']),
+    new HtmlWebpackPlugin({
+      template: './src/index.html'
+    })
+  ],
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, '../dist')
