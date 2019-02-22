@@ -4,21 +4,33 @@ module.exports = {
   mode: 'development', // production => 压缩, development 不压缩
   entry: './src/index.js',
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.(jpg|png|gif)$/,
         use: {
           loader: 'file-loader',
           options: {
-            name: '[name]-[hash].[ext]',
+            name: '[name].[ext]',
             outputPath: 'imgs/'
           }
         }
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2
+            }
+          },
+          'sass-loader',
+          'postcss-loader']
       }
     ]
   },
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname, '../dist') 
+    path: path.resolve(__dirname, '../dist')
   }
 }
