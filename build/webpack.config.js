@@ -4,7 +4,10 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   mode: 'development', // production => 压缩, development 不压缩
-  entry: './src/index.js',
+  devtool: 'source-map',
+  entry: {
+    main: './src/index.js',
+  },
   module: {
     rules: [{
         test: /\.(jpg|png|gif)$/,
@@ -39,13 +42,16 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(['./dist']),
+    new CleanWebpackPlugin(['dist'], {
+      root: path.resolve(__dirname, '../')
+    }),
     new HtmlWebpackPlugin({
       template: './src/index.html'
     })
   ],
   output: {
-    filename: 'main.js',
+    // publicPath: 'https://www.cdn.com',
+    filename: '[name].js',
     path: path.resolve(__dirname, '../dist')
   }
 }
