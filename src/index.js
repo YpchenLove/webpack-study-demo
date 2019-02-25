@@ -7,4 +7,4 @@ img.classList.add('img')
 
 const app = document.getElementById('root')
 app.append(img)
-console.log(asdf)
+console.log('as')

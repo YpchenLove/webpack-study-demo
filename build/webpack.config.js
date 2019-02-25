@@ -4,7 +4,12 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   mode: 'development', // production => 压缩, development 不压缩
-  devtool: 'source-map',
+  devtool: 'sheap-module-eval-source-map',
+  devServer: {
+    contentBase: path.resolve(__dirname, '../dist'),
+    open: true,
+    port: 8080
+  },
   entry: {
     main: './src/index.js',
   },
