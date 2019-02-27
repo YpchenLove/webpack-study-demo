@@ -42,6 +42,21 @@ module.exports = {
           'postcss-loader']
       },
       {
+        test: /\.js$/,
+        exclude: /node_modules/, 
+        loader: 'babel-loader',
+        options: {
+          presets: [
+            ['@babel/preset-env', {
+              targets: {
+                chrome: '67',
+              },
+              userBuiltIns: 'usage'
+            }]
+          ]
+        }
+      },
+      {
         test: /\.(eot|ttf|svg)$/,
         use: {
           loader: 'file-loader'
