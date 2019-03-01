@@ -5,7 +5,6 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    lodash: './src/lodash.js',
     main: './src/index.js',
   },
   module: {
@@ -55,6 +54,11 @@ module.exports = {
     }),
     new webpack.HotModuleReplacementPlugin()
   ],
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
+  },
   output: {
     // publicPath: 'https://www.cdn.com',
     filename: '[name].js',
