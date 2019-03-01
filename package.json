@@ -4,10 +4,9 @@
   "description": "",
   "private": true,
   "scripts": {
-    "build": "webpack --config build/webpack.config.js",
-    "watch": "webpack --watch --config build/webpack.config.js",
-    "start": "webpack-dev-server --config build/webpack.config.js",
-    "dev": "node dist/main.js"
+    "dev": "webpack-dev-server --config build/webpack.dev.js",
+    "dev-build": "webpack --config build/webpack.dev.js",
+    "build": "webpack --config build/webpack.prod.js"
   },
   "keywords": [],
   "author": "",
@@ -28,10 +27,12 @@
     "url-loader": "^1.1.2",
     "webpack": "^4.29.5",
     "webpack-cli": "^3.2.3",
-    "webpack-dev-server": "^3.2.0"
+    "webpack-dev-server": "^3.2.0",
+    "webpack-merge": "^4.2.1"
   },
   "dependencies": {
     "css-loader": "^2.1.0",
+    "lodash": "^4.17.11",
     "postcss-loader": "^3.0.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",

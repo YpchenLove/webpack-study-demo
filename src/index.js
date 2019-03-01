@@ -1,3 +1,1 @@
-import { add } from './math';
-
-add(2, 1)
+console.log(_.join(['a', 'b', 'c'], '|||'))

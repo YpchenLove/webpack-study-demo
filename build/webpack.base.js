@@ -4,16 +4,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
-  mode: 'development', // production => 压缩, development 不压缩
-  devtool: 'sheap-module-eval-source-map',
-  devServer: {
-    contentBase: path.resolve(__dirname, '../dist'),
-    open: true,
-    port: 8080,
-    hot: true,
-    hotOnly: true
-  },
   entry: {
+    lodash: './src/lodash.js',
     main: './src/index.js',
   },
   module: {
