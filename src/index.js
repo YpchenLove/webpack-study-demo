@@ -1,11 +1,13 @@
-function getComponent() {
-  return import('lodash').then(({default: _} ) => {
-    var element = document.createElement('div')
-    element.innerHTML = _join(['ypchen', '520'], '-')
-    return element
-  })
+async function getComponent() {
+  const { default: _ } = await import(/* webpackChunkName:"lodash" */ 'lodash')
+  const element = document.createElement('div')
+  element.innerHTML = _.join(['ypchen', '520'], '-')
+  return element
 }
 
-getComponent().then(element => {
-  document.body.appendChild(element)
+document.addEventListener('click', () => {
+  getComponent().then(element => {
+    document.body.appendChild(element)
+  })
 })
+
