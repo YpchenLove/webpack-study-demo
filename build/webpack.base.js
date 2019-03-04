@@ -19,20 +19,6 @@ module.exports = {
         }
       },
       {
-        test: /\.scss$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 2,
-              modules: true
-            }
-          },
-          'sass-loader',
-          'postcss-loader']
-      },
-      {
         test: /\.js$/,
         exclude: /node_modules/, 
         loader: 'babel-loader',
@@ -55,6 +41,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin()
   ],
   optimization: {
+    usedExports: true,
     splitChunks: {
       chunks: 'all',
       minSize: 30000,
@@ -80,6 +67,7 @@ module.exports = {
   output: {
     // publicPath: 'https://www.cdn.com',
     filename: '[name].js',
+    chunkFilename: '[name].chunk.js',
     path: path.resolve(__dirname, '../dist')
   }
 }
