@@ -1,6 +1,7 @@
 const baseConfig = require('./webpack.base');
 const merge = require('webpack-merge');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 const prodConfig = {
   mode: 'production', // production => 压缩, development 不压缩
@@ -29,6 +30,21 @@ const prodConfig = {
           'postcss-loader'
         ]
       },
+    ]
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        styles: {
+          name: 'styles',
+          test: /\.css$/,
+          chunks: 'all',
+          enforce: true
+        }
+      }
+    },
+    minimizer: [
+      new OptimizeCSSAssetsPlugin({})
     ]
   },
   plugins: [
