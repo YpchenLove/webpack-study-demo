@@ -1,11 +1,16 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const webpack = require('webpack');
 
 module.exports = {
   entry: {
     main: './src/index.js',
+    // vendor: [
+    //   'react',
+    //   'react-dom',
+    // ]
   },
   module: {
     rules: [{
@@ -21,7 +26,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/, 
-        loader: 'babel-loader',
+        loader: 'babel-loader?cacheDirectory=true',
       },
       {
         test: /\.(eot|ttf|svg)$/,
@@ -38,6 +43,14 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html'
     }),
+    // new BundleAnalyzerPlugin(),
+    // new webpack.DllPlugin({
+    //   // DllPlugin的name属性需要和libary保持一致
+    //   name: '[name]_[hash]',
+    //   path: path.join(__dirname, 'dist', '[name]-manifest.json'),
+    //   // context需要和webpack.config.js保持一致
+    //   context: __dirname,
+    // }),
     new webpack.HotModuleReplacementPlugin()
   ],
   optimization: {
