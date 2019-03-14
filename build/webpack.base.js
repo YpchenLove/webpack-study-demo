@@ -55,6 +55,9 @@ module.exports = {
   ],
   optimization: {
     usedExports: true,
+    runtimeChunk: {
+      name: 'runtime'
+    },
     splitChunks: {
       chunks: 'all',
       minSize: 30000,
