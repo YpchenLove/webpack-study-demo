@@ -79,8 +79,6 @@ module.exports = {
   },
   output: {
     // publicPath: 'https://www.cdn.com',
-    filename: '[name].js',
-    chunkFilename: '[name].chunk.js',
     path: path.resolve(__dirname, '../dist')
   }
 }

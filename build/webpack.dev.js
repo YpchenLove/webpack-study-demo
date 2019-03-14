@@ -43,6 +43,10 @@ const devConfig= {
     new webpack.HotModuleReplacementPlugin()
   ],
   optimization: {
+  },
+  output: {
+    filename: '[name].js',
+    chunkFilename: '[name].js',
   }
 }
 
