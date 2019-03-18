@@ -1,10 +1,14 @@
 const path = require('path');
+
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const webpack = require('webpack');
 
-module.exports = {
+const devConfig = require('./webpack.dev');
+const prodConfig = require('./webpack.prod');
+const merge = require('webpack-merge');
+
+const baseConfig= {
   entry: {
     main: './src/index.js',
     // vendor: [
@@ -83,5 +87,13 @@ module.exports = {
   output: {
     // publicPath: 'https://www.cdn.com',
     path: path.resolve(__dirname, '../dist')
+  }
+}
+
+module.exports = (env) => {
+  if (env && env.production) {
+    return merge(baseConfig, prodConfig)
+  } else {
+    return merge(baseConfig, devConfig)
   }
 }
