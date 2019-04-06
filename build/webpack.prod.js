@@ -1,6 +1,6 @@
 
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 const prodConfig = {
   mode: 'production', // production => 压缩, development 不压缩
@@ -28,7 +28,7 @@ const prodConfig = {
           'css-loader',
           'postcss-loader'
         ]
-      },
+      }
     ]
   },
   optimization: {
@@ -54,7 +54,7 @@ const prodConfig = {
   ],
   output: {
     filename: '[name].[hash].js',
-    chunkFilename: '[name].[contenthash].js',
+    chunkFilename: '[name].[contenthash].js'
   }
 }
 

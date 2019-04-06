@@ -1,7 +1,7 @@
-const webpack = require('webpack');
-const path = require('path');
+const webpack = require('webpack')
+const path = require('path')
 
-const devConfig= {
+const devConfig = {
   mode: 'development', // production => 压缩, development 不压缩
   devtool: 'sheap-module-eval-source-map',
   devServer: {
@@ -34,7 +34,7 @@ const devConfig= {
           'css-loader',
           'postcss-loader'
         ]
-      },
+      }
     ]
   },
   plugins: [
@@ -44,7 +44,7 @@ const devConfig= {
   },
   output: {
     filename: '[name].js',
-    chunkFilename: '[name].js',
+    chunkFilename: '[name].js'
   }
 }
 

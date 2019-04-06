@@ -1,16 +1,16 @@
-const path = require('path');
+const path = require('path')
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const webpack = require('webpack')
 
-const devConfig = require('./webpack.dev');
-const prodConfig = require('./webpack.prod');
-const merge = require('webpack-merge');
+const devConfig = require('./webpack.dev')
+const prodConfig = require('./webpack.prod')
+const merge = require('webpack-merge')
 
-const baseConfig= {
+const baseConfig = {
   entry: {
-    main: './src/index.js',
+    main: './src/index.js'
     // vendor: [
     //   'react',
     //   'react-dom',
@@ -18,27 +18,26 @@ const baseConfig= {
   },
   module: {
     rules: [{
-        test: /\.(jpg|png|gif)$/,
-        use: {
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]',
-            outputPath: 'imgs/'
-          }
-        }
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/, 
-        loader: 'babel-loader?cacheDirectory=true',
-      },
-      {
-        test: /\.(eot|ttf|svg)$/,
-        use: {
-          loader: 'file-loader'
+      test: /\.(jpg|png|gif)$/,
+      use: {
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          outputPath: 'imgs/'
         }
       }
-    ]
+    },
+    {
+      test: /\.js$/,
+      exclude: /node_modules/,
+      loader: 'babel-loader?cacheDirectory=true'
+    },
+    {
+      test: /\.(eot|ttf|svg)$/,
+      use: {
+        loader: 'file-loader'
+      }
+    }]
   },
   plugins: [
     new CleanWebpackPlugin(['dist'], {
@@ -85,7 +84,7 @@ const baseConfig= {
     }
   },
   output: {
-    // publicPath: 'https://www.cdn.com',
+    // publicPath: 'https://www.cdn.com',  // cdn加速
     path: path.resolve(__dirname, '../dist')
   }
 }
